@@ -13,17 +13,19 @@
 		Connection con = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 		//insert
 		String name = request.getParameter("name_Id");
-		String std = request.getParameter("std_Id");
-		String add = request.getParameter("add_Id");		
-		String insert = "INSERT INTO STUDENT (NAME,STD,ADDRESS)values(?,?,?)";
-		String select = "SELECT * FROM STUDENT";
+		String pwd = request.getParameter("pwd_Id");
+		String email = request.getParameter("email_Id");		
+		String mobile= request.getParameter("mobile_Id");
+		String insert = "INSERT INTO USER_REG (USERNAME, PASSWORD, EMAIL, MOBILE) values(?,?,?,?)";
+		String select = "SELECT * FROM USER_REG";
 	
 		int updateQuery = 0;
 		ps = con.prepareStatement(insert);
 		
 		ps.setString(1, name);
-		ps.setString(2, std);
-		ps.setString(3, add);
+		ps.setString(2, pwd);
+		ps.setString(3, email);
+		ps.setString(4, mobile);
 		updateQuery = ps.executeUpdate();
 
 //select
@@ -46,10 +48,15 @@ ResultSet rs = ps.executeQuery();
 
 			<form method="post">
 
-				<label>Name :</label> <input type="text" class="form-control"
-					name="name_Id" /> <label>Std :</label> <input type="text"
-					class="form-control" name="std_Id" /> <label>Add :</label> <input
-					type="text" class="form-control" name="add_Id" /><br />
+				    <label>Name :</label> 
+				    <input type="text" class="form-control"	name="name_Id" /> 
+					<label>Password :</label>
+				    <input type="password"	class="form-control" name="pwd_Id" /> 
+					<label>Email :</label> 
+					<input type="email" class="form-control" name="email_Id" />
+					<label>Mobile Number :</label> 
+					<input type="number" class="form-control" name="mobile_Id" />
+					<br />
 				<button class="btn btn-success" type="submit" value="submit">Add
 					Student</button>
 
@@ -76,17 +83,17 @@ ResultSet rs = ps.executeQuery();
 			<tr>
 				<th>Id</th>
 				<th>Name</th>
-				<th>Standard</th>
-				<th>Address</th>
+				<th>Email</th>
+				<th>Mobile</th>
 			</tr>
 			<%
 			while (rs.next()) {
 			%>
 			<tr>
-				<td><%=rs.getInt("id")%></td>
-				<td><%=rs.getString("Name")%></td>
-				<td><%=rs.getString("Std")%></td>
-				<td><%=rs.getString("Address")%></td>
+				<td><%=rs.getInt("ID")%></td>
+				<td><%=rs.getString("USERNAME")%></td>
+				<td><%=rs.getString("EMAIL")%></td>
+				<td><%=rs.getString("MOBILE")%></td>
 			</tr>
 			<%
 			}
