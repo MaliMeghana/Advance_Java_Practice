@@ -13,6 +13,7 @@
 
 </head>
 <body>
+<br/>
 	<div class="container" style="border:2px solid black">
 	<div class="row">
 	<div class="col-md-5 mt-4 ">
@@ -35,7 +36,7 @@
 			   <c:if test="${user.id!=null}">
 			   <input  value="Update" type="submit" formaction="user-update" class="btn btn-info form-control" style="width:40%;float:right"/>
 			   </c:if>
-			  
+			  <br/>
 			   </div>
 			</form>
 		</div>
@@ -48,7 +49,7 @@
 					<th>USERNAME</th>
 					<th>EMAIL</th>
 					<th>MOBILE</th>
-					<th colspan="2">Action</th>
+					<th colspan="2">ACTION</th>
 				</tr>
 				<c:forEach var="item" items="${userlist}">
 					<tr>
@@ -63,6 +64,7 @@
 			</table>
 		</div>
 	</div>
+	<br/>
 	</div>
 
 </body>

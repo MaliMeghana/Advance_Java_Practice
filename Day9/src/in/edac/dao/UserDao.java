@@ -128,6 +128,7 @@ public class UserDao {
 			throw e;
 		}
 	}
+	
 	public User readUser(User user) throws Exception {
 		Class.forName(DB_DRIVER);
 		try (Connection con=DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)){
@@ -170,3 +171,14 @@ public class UserDao {
 //		dao.deleteUser(user);
 	}
 }
+
+
+/*
+Diff Between  forward and redirect
+in forward we can reuse
+url is not visible in forward
+same request get service
+same request continue
+advantage with redirect ==>url change (same as disadvantage)
+
+*/
